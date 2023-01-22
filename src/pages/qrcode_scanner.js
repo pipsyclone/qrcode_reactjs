@@ -1,11 +1,11 @@
-import QrReader from "react-qr-reader";
+import QrCodeReader from "react-qrcode-reader";
 import { Link } from "react-router-dom";
 
 import Scripts from "../scripts";
 
 const QRCodeScanner = () => {
 
-    const { qrData, handleScan, handleError, loadingScan } = Scripts();
+    const { qrData, onRead, loadingScan } = Scripts();
 
     return (
         <div className="card card-body shadow mx-auto col-sm-5 container mt-5">
@@ -27,17 +27,11 @@ const QRCodeScanner = () => {
                         </div>
                     :
                         <center>
-                            <QrReader
-                                delay={500}
-                                onError={handleError}
-                                onScan={handleScan}
-                                style={{ height: 200, width: 300 }}
-                                resolution={1000}
-                            />
+                            <QrCodeReader delay={500} width={300} height={300} onRead={onRead} />
                         </center>
                 }
 
-                <textarea className="form-control" style={{ marginTop: '20%' }} rows={4} value={qrData}></textarea>
+                <textarea className="form-control" rows={4} value={qrData}></textarea>
             </div>
         </div>
     )

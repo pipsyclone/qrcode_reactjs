@@ -18,24 +18,21 @@ const Scripts = () => {
     const [loadingScan, setLoadingScan] = useState("");
     const [qrData, setQrData] = useState("No Result");
 
-    const handleScan = data => {
-        if (data) {
+    const onRead = (qrcode) => {
+        if (qrcode) {
             setLoadingScan("isLoading")
-
             setTimeout(() => {
                 setLoadingScan("")
-                setQrData(data)
+                setQrData(qrcode.data)
             }, 3000)
+        }else {
+            console.log("Tidak Terdeteksi!")
         }
-    }
-
-    const handleError = err => {
-        console.log(err.message)
     }
 
     return {
         qr, setQr, downloadQR,
-        qrData, handleScan, handleError, loadingScan
+        qrData, onRead, loadingScan
     }
 }
 
