@@ -1,0 +1,7 @@
+.qrcode-icon-hover {
+    color: grey;
+}
+
+.qrcode-icon-hover:hover{
+    color: blueviolet;
+}
